@@ -142,7 +142,7 @@ public class ServletBand extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
-				response.sendRedirect(HOST + "/albums");
+				response.sendRedirect(HOST + "/bands");
 			}
 			break;
 		}

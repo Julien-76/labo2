@@ -1,0 +1,100 @@
+<button class="btn btn-primary"
+        (click)="getLabels()">Afficher les labels</button>
+<button class="btn btn-primary"
+        (click)="closeLabels()">Fermer les labels</button>
+<button class="btn btn-primary"
+        (click)="getAlbums()">Afficher les Albums</button>
+<button class="btn btn-primary"
+        (click)="closeAlbums()">Fermer les Albums</button>
+<button class="btn btn-primary"
+        (click)="getBands()">Afficher les Bands</button>
+<button class="btn btn-primary"
+        (click)="closeBands()">Fermer les Bands</button>
+<button class="btn btn-primary"
+        (click)="getMembers()">Afficher les Members</button>
+<button class="btn btn-primary"
+        (click)="closeMembers()">Fermer les Members</button>
+
+
+  <table >
+   <thead *ngIf="listeLabels.length > 0">
+     <th>Nom</th>
+     <th>Nationality</th>
+     <th>Creation</th>
+   </thead>
+    <tbody>
+     <tr *ngFor="let g of listeLabels">
+       <td>{{g.name}}</td>
+       <td>{{g.nationality}}</td>
+       <td>{{g.creation}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <table>
+		<thead *ngIf="listeAlbums.length > 0">
+			<th>Nom</th>
+			<th>Groupe</th>
+			<th>Label</th>
+			<th>Date de sortie</th>
+			<th>Style</th>
+		</thead>
+	  <tbody>
+			<tr *ngFor="let album of listeAlbums">
+				<td>{{album.name}}</td>
+				<td>{{album.band.name}}</td>
+				<td>{{album.label.name}}</td>
+				<td>{{album.release_Date}}</td>
+				<td>{{album.style}}</td>
+			</tr>
+	  </tbody>
+  </table>
+
+
+  <table>
+		<thead *ngIf="listeBands.length > 0">
+			<th>Nom</th>
+			<th>Nationality</th>
+			<th>Creation</th>
+			<th>Style</th>
+			<th>Label</th>
+			<th>Albums</th>
+			<th>Members</th>
+		</thead>
+	  <tbody>
+			<tr *ngFor="let band of listeBands">
+				<td>{{band.name}}</td>
+				<td>{{band.nationality}}</td>
+				<td>{{band.creation}}</td>
+				<td>{{band.style}}</td>
+				<td>{{band.label.name}}</td>
+				<td>{{band.albums}}</td>
+				<td>{{band.members}}</td>
+      </tr>
+  	</tbody>
+</table>
+
+    <table>
+        <thead *ngIf="listeMembers.length > 0">
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Role</th>
+          <th>Naissance</th>
+          <th>Origine</th>
+          <th>ID</th>
+          <th>Second Rôle</th>
+        </thead>
+      <tbody>
+          <tr *ngFor="let member of listeMembers">
+            <td>{{member.name}}</td>
+            <td>{{member.first_Name}}</td>
+            <td>{{member.role}}</td>
+            <td>{{member.birthdate}}</td>
+            <td>{{member.origin}}</td>
+            <td>{{member.id_Member}}</td>
+            <td>{{member.second_Role}}</td>
+          </tr>
+      </tbody>
+    </table>
