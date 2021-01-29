@@ -16,9 +16,15 @@ public class Util {
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 		resp.addHeader("Access-Control-Allow-Origin", "*");		// Permet d'outrepasser le problème de CORS
+		resp.addHeader("Access-Control-Request-Headers", "*");
+		resp.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS, PUT");
+		resp.addHeader("Access-Control-Allow-Headers",
+				"Origin, X-Requested-With,X-HTTP-Method-Override, Content-Type, Accept, Authorization");
+		resp.addHeader("Access-Control-Allow-Credentials", "true");
+		
+	
 		out.print(new Gson().toJson(objet));					// Affiche le flux
-		out.flush();											// Vide le flux
+		out.flush(); // Vide le flux
 		
 	}
-
 }

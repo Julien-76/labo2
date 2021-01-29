@@ -1,100 +1,117 @@
-<button class="btn btn-primary"
+<div style="text-align: center;">
+<button *ngIf="listeLabels.length == 0" class="btn btn-warning boutonsDuHaut"
         (click)="getLabels()">Afficher les labels</button>
-<button class="btn btn-primary"
+<button *ngIf="listeLabels.length > 0" class="btn btn-warning boutonsDuHaut"
         (click)="closeLabels()">Fermer les labels</button>
-<button class="btn btn-primary"
+<button *ngIf="listeAlbums.length == 0" class="btn btn-warning boutonsDuHaut"
         (click)="getAlbums()">Afficher les Albums</button>
-<button class="btn btn-primary"
+<button *ngIf="listeAlbums.length > 0" class="btn btn-warning boutonsDuHaut"
         (click)="closeAlbums()">Fermer les Albums</button>
-<button class="btn btn-primary"
+<button *ngIf="listeBands.length == 0" class="btn btn-warning boutonsDuHaut"
         (click)="getBands()">Afficher les Bands</button>
-<button class="btn btn-primary"
+<button *ngIf="listeBands.length > 0" class="btn btn-warning boutonsDuHaut"
         (click)="closeBands()">Fermer les Bands</button>
-<button class="btn btn-primary"
+<button *ngIf="listeMembers.length == 0" class="btn btn-warning boutonsDuHaut"
         (click)="getMembers()">Afficher les Members</button>
-<button class="btn btn-primary"
+<button *ngIf="listeMembers.length > 0" class="btn btn-warning boutonsDuHaut"
         (click)="closeMembers()">Fermer les Members</button>
+</div>
+<h1 class="titres">Gestion de la DB</h1>
+<h2 class="titres">Dans quelle rubrique veux-tu aller ?</h2>
+<div style="text-align: center;">
+        <button class="btn btn-warning btn-lg btn-menu"
+                (click)="choixAlbums()">Albums</button>
+        <button class="btn btn-warning btn-lg btn-menu"
+                (click)="choixBands()">Bands</button>
+        <button class="btn btn-warning btn-lg btn-menu"
+                (click)="choixLabels()">Labels</button>
+        <button class="btn btn-warning btn-lg btn-menu"
+                (click)="choixMembers()">Members</button>
+</div>
+<app-albums *ngIf="choix == 'albums'"></app-albums>
+<app-bands *ngIf="choix == 'bands'"></app-bands>
+<app-labels *ngIf="choix == 'labels'"></app-labels>
+<app-members *ngIf="choix == 'members'"></app-members>
+<h2 class="titres" *ngIf="listeLabels.length > 0">Labels</h2>
 
 
-  <table >
+
+  <table class="allTableSelect">
    <thead *ngIf="listeLabels.length > 0">
-     <th>Nom</th>
-     <th>Nationality</th>
-     <th>Creation</th>
+     <th class="selectallth">Nom</th>
+     <th class="selectallth">Nationality</th>
+     <th class="selectallth">Creation</th>
    </thead>
     <tbody>
      <tr *ngFor="let g of listeLabels">
-       <td>{{g.name}}</td>
-       <td>{{g.nationality}}</td>
-       <td>{{g.creation}}</td>
+       <td class="selectalltd">{{g.name}}</td>
+       <td class="selectalltd">{{g.nationality}}</td>
+       <td class="selectalltd">{{g.creation}}</td>
       </tr>
     </tbody>
   </table>
-
-
-
-  <table>
-		<thead *ngIf="listeAlbums.length > 0">
-			<th>Nom</th>
-			<th>Groupe</th>
-			<th>Label</th>
-			<th>Date de sortie</th>
-			<th>Style</th>
+  <h2 class="titres" *ngIf="listeAlbums.length > 0">Albums</h2>
+  <table class="allTableSelect">
+		<thead  *ngIf="listeAlbums.length > 0" >
+			<th class="selectallth">Nom</th>
+			<th class="selectallth">Groupe</th>
+			<th class="selectallth">Label</th>
+			<th class="selectallth">Date de sortie</th>
+			<th class="selectallth">Style</th>
 		</thead>
 	  <tbody>
 			<tr *ngFor="let album of listeAlbums">
-				<td>{{album.name}}</td>
-				<td>{{album.band.name}}</td>
-				<td>{{album.label.name}}</td>
-				<td>{{album.release_Date}}</td>
-				<td>{{album.style}}</td>
+				<td class="selectalltd">{{album.name}}</td>
+				<td class="selectalltd">{{album.band.name}}</td>
+				<td class="selectalltd">{{album.label.name}}</td>
+				<td class="selectalltd">{{album.release_Date}}</td>
+				<td class="selectalltd">{{album.style}}</td>
 			</tr>
 	  </tbody>
   </table>
-
-
-  <table>
+  <h2 class="titres" *ngIf="listeBands.length > 0">Bands</h2>
+  <table class="allTableSelect">
 		<thead *ngIf="listeBands.length > 0">
-			<th>Nom</th>
-			<th>Nationality</th>
-			<th>Creation</th>
-			<th>Style</th>
-			<th>Label</th>
-			<th>Albums</th>
-			<th>Members</th>
+			<th class="selectallth">Nom</th>
+			<th class="selectallth">Nationality</th>
+			<th class="selectallth">Creation</th>
+			<th class="selectallth">Style</th>
+			<th class="selectallth">Label</th>
+			<th class="selectallth">Albums</th>
+			<th class="selectallth">Members</th>
 		</thead>
 	  <tbody>
 			<tr *ngFor="let band of listeBands">
-				<td>{{band.name}}</td>
-				<td>{{band.nationality}}</td>
-				<td>{{band.creation}}</td>
-				<td>{{band.style}}</td>
-				<td>{{band.label.name}}</td>
-				<td>{{band.albums}}</td>
-				<td>{{band.members}}</td>
+				<td class="selectalltd">{{band.name}}</td>
+				<td class="selectalltd">{{band.nationality}}</td>
+				<td class="selectalltd">{{band.creation}}</td>
+				<td class="selectalltd">{{band.style}}</td>
+				<td class="selectalltd">{{band.label.name}}</td>
+				<td class="selectalltd">{{band.albums}}</td>
+				<td class="selectalltd">{{band.members}}</td>
       </tr>
   	</tbody>
-</table>
-
-    <table>
+</table >
+<h2 class="titres" *ngIf="listeMembers.length > 0">Members</h2>
+    <table class="allTableSelect">
         <thead *ngIf="listeMembers.length > 0">
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Role</th>
-          <th>Naissance</th>
-          <th>Origine</th>
-          <th>ID</th>
-          <th>Second Rôle</th>
+          <th class="selectallth">Nom</th>
+          <th class="selectallth">Prénom</th>
+          <th class="selectallth">Role</th>
+          <th class="selectallth">Naissance</th>
+          <th class="selectallth">Origine</th>
+          <th class="selectallth">ID</th>
+          <th class="selectallth">Second Rôle</th>
         </thead>
       <tbody>
           <tr *ngFor="let member of listeMembers">
-            <td>{{member.name}}</td>
-            <td>{{member.first_Name}}</td>
-            <td>{{member.role}}</td>
-            <td>{{member.birthdate}}</td>
-            <td>{{member.origin}}</td>
-            <td>{{member.id_Member}}</td>
-            <td>{{member.second_Role}}</td>
+            <td class="selectalltd">{{member.name}}</td>
+            <td class="selectalltd">{{member.first_Name}}</td>
+            <td class="selectalltd">{{member.role}}</td>
+            <td class="selectalltd">{{member.birthdate}}</td>
+            <td class="selectalltd">{{member.origin}}</td>
+            <td class="selectalltd">{{member.id_Member}}</td>
+            <td class="selectalltd">{{member.second_Role}}</td>
           </tr>
       </tbody>
     </table>

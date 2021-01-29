@@ -12,7 +12,9 @@ import java.util.List;
 import com.google.gson.Gson;
 
 import be.technifutur.java2020.ConnexionPSQL;
+import be.technifutur.java2020.Message;
 import be.technifutur.java2020.Util;
+import be.technifutur.java2020.dto.Album;
 import be.technifutur.java2020.services.AlbumService;
 import be.technifutur.java2020.services.BandService;
 import be.technifutur.java2020.services.LabelService;
@@ -89,4 +91,24 @@ public class Api extends HttpServlet {
 		}
 
 	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		Album addAlbum = new Gson().fromJson(req.getReader(), Album.class);
+		
+		try {
+			albumService.insert(ConnexionPSQL.getInstance(), addAlbum);
+			Util.formatResponse(resp, new Message("L'album " + addAlbum.getName() + " a bien été enregistré"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Util.formatResponse(resp, "");
+	}
+	
+	
 }

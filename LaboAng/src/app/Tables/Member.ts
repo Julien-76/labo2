@@ -4,8 +4,8 @@ export interface Member {
     first_Name: string,
     origin: string,
     birthdate: Date,
-    role: Role,
-    second_Role: Role,
+    role: any,
+    second_Role: any,
     id_Member: number
     
 }

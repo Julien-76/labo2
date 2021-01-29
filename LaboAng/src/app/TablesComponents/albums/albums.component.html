@@ -1,0 +1,46 @@
+<h2 class="titre titreEtBouton">Rubrique Albums<br/>
+    <button class="btn btn-warning boutonsDuHaut" (click)="getApi() ">Create</button>
+    <button class="btn btn-warning boutonsDuHaut" (click)="deleteOk()">Delete</button>
+    <button class="btn btn-warning boutonsDuHaut" (click)="updateOk()">Update</button>
+</h2>
+<div class="titre" *ngIf="create">
+    <form [formGroup]="formulCreateAlbum" (submit)="onCreate()">
+        <div >
+        <label for="name">Name : </label>
+        <input class="champs" id="name" type="text" formControlName="name">
+        </div>
+    
+        <div>
+            <label for="band">Band : </label>
+            <select formControlName="band">
+                <option  *ngFor="let band of listeBands" [ngValue]="band">{{band.name}}</option>
+            </select>
+        </div>
+        <div>
+        <label for="label">Label : </label>
+        <select formControlName="label">
+            <option class="champs"  *ngFor="let lab of listeLabels" [ngValue]="lab">{{lab.name}}</option>
+        </select>
+        </div>
+        <div>
+          <label for="release_Date">Release Date : </label>
+           <input type="date"  formControlName="release_Date">
+        </div>
+        <div>
+            <label for="style">Style : </label>
+            <select formControlName="style">
+		    	<option value="Death">Death</option>
+		    	<option value="Black">Black</option>
+		    	<option value="Thrash">Thrash</option>
+		    	<option value="Doom">Doom</option>
+		    	<option value="Power">Power</option>
+		    	<option value="Heavy">Heavy</option>
+            </select>
+          </div>
+          <p *ngIf="formulCreateAlbum.invalid && formulCreateAlbum.controls.name.dirty && 
+          
+          formulCreateAlbum.controls.release_Date.dirty">Formulaire invalide</p>
+        <button type="submit">Inscrire</button>
+  </form>
+  {{newAlbum |json}}
+</div>

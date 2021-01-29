@@ -1,5 +1,6 @@
 import { Label } from "./Label";
 import { Band } from "./Band";
+import { DatePipe } from "@angular/common";
 
 export interface Album  {
 
@@ -7,6 +8,6 @@ export interface Album  {
     label : Label,
     band : Band,
     release_Date : Date,
-    style : Style
+    style : any
     
 }

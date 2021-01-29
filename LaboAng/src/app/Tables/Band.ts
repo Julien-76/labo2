@@ -5,7 +5,7 @@ export interface Band {
     name : string,
     nationality : string,
     label : Label,
-    style : Style,
+    style : any,
     creation : number,
     members : number,
     albums : number
